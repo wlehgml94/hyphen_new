@@ -1,0 +1,1 @@
+$(document).ready(function(){document.querySelectorAll(".drag_image").forEach(r=>{var e=r.querySelector(".drag_slider");e&&e.addEventListener("input",e=>{r.style.setProperty("--leftVal",e.target.value+"%")})})});

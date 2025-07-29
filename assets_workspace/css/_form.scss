@@ -1,0 +1,780 @@
+/* ********** ********** ********** */
+/*     Contact Form Common CSS      */
+/* ********** ********** ********** */
+/* 공통 */
+.d_hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+}
+/* ********** ********** ********** */
+/*     Contact Form Valid CSS       */
+/* ********** ********** ********** */
+.wpcf7-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  margin: 0;
+}
+.wpcf7-response-output {
+  display: none;
+}
+/* 기본 에러 삭제 */
+span.wpcf7-not-valid-tip {
+  display: none;
+}
+/* 유효성 안내 메시지 */
+.ff_valid_box {
+  position: absolute;
+  right: 0;
+  bottom: -3rem;
+  margin: 0;
+  color: $c_err;
+  @include text(1.2rem, 400, 170%);
+}
+.has_error {
+  @include desktop {
+    margin-top: -1.4rem;
+  }
+  color: $c_err;
+  @include text(1.2rem, 400, 170%);
+}
+/* ************** */
+/* 보내기 버튼 활성화 */
+.contact_submit {
+  position: relative;
+  input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    text-indent: -1000%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .bt-base {
+    &.active {
+      input {
+        cursor: pointer;
+        pointer-events: painted;
+      }
+    }
+  }
+}
+.utmBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* side leadform */
+.side-lead-contents {
+  .contact_title{
+    word-break: keep-all;
+    @include desktop{
+      @include text(3.6rem,400,140%);
+    }
+    @include mobile{
+      @include text(2.4rem,400,140%);
+    }
+  }
+  .desc{
+    @include desktop{
+      margin: 1.6rem 0 7.2rem;
+      @include text(2rem,400,170%);
+    }
+    @include mobile{
+      margin: 1.2rem 0 6rem;
+      @include text(1.6rem,400,170%);
+    }
+  }
+  .contact_box {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    @include mobile {
+      gap: 3.2rem;
+    }
+  }
+  .contact_item {
+    position: relative;
+    border-bottom: 1px solid rgba($color: $c_text, $alpha: 0.2);
+    &.o_verify {
+      border-bottom: 1px solid rgba($color: $c_text, $alpha: 1);
+    }
+    label {
+      display: flex;
+      align-items: center;
+      gap: 6rem;
+      width: 100%;
+      padding: 0.6rem 0;
+      @include mobile {
+        flex-direction: column;
+        align-items: start;
+        gap: 0.6rem;
+      }
+    }
+    .label_title {
+      display: inline-flex;
+      min-width: 13.8rem;
+      @include text(2.4rem, 700, 140%);
+      @include mobile {
+        @include text(1.6rem, 700, 170%);
+      }
+    }
+    .wpcf7-form-control-wrap {
+      flex: 1;
+      @include mobile {
+        display: flex;
+        width: 100%;
+      }
+      input {
+        width: 100%;
+        height: 4rem;
+        @include text(2rem, 400, 170%);
+        @include mobile {
+          @include text(1.6rem, 400, 170%);
+        }
+        &::placeholder {
+          opacity: 0.5;
+          @include text(2rem, 400, 170%);
+          @include mobile {
+            @include text(1.6rem, 400, 170%);
+          }
+        }
+      }
+    }
+    .scale_area {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include mobile {
+        width: 100%;
+      }
+      .scale_text {
+        text-decoration: none;
+        @include text(2.4rem, 400, 140%);
+        @include mobile {
+          @include text(1.8rem, 400, 170%);
+        }
+      }
+      .ff_valid_box {
+        right: -2.1rem;
+      }
+    }
+  }
+  .contact_agree {
+    display: flex;
+    width: 100%;
+    @include desktop {
+      margin: 2rem 0;
+    }
+    input[type='checkbox'] {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      z-index: -1;
+      opacity: 0;
+      &:checked + .wpcf7-list-item-label::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Crect x='0.5' y='0.5' width='21' height='21' rx='10.5' fill='%23141414'/%3E%3Crect x='0.5' y='0.5' width='21' height='21' rx='10.5' stroke='%23141414'/%3E%3Cpath d='M6 10.7L9.84516 15.5L16 7.5' stroke='white'/%3E%3C/svg%3E");
+      }
+    }
+    p > label {
+      position: relative;
+      display: block;
+      .wpcf7-form-control-wrap {
+        position: static;
+      }
+      span {
+        word-break: keep-all;
+        @include text(2rem, 700);
+        @include mobile {
+          @include text(1.6rem, 700);
+        }
+        > a {
+          font-weight: 700;
+          text-decoration: underline;
+        }
+        &.wpcf7-form-control-wrap + span {
+          display: inline-block;
+          padding-left: calc(var(--icon_checkbox_size) + 1.2rem);
+          width: 100%;
+          line-height: 170%;
+        }
+      }
+    }
+    .wpcf7-list-item {
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0.2rem;
+      margin: 0;
+      width: var(--icon_checkbox_size);
+      height: var(--icon_checkbox_size);
+      @include mobile {
+        top: 0.4rem;
+      }
+    }
+    .wpcf7-list-item-label::before {
+      content: '';
+      display: block;
+      width: var(--icon_checkbox_size);
+      height: var(--icon_checkbox_size);
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Crect x='0.5' y='0.5' width='21' height='21' rx='10.5' stroke='%23141414'/%3E%3Cpath d='M6 10.2L9.84516 15L16 7' stroke='%23141414' stroke-width='1.5'/%3E%3C/svg%3E")
+        no-repeat center / cover;
+    }
+    .wpcf7-acceptance {
+      font-size: 0;
+    }
+  }
+  .bt-wrapper {
+    margin-top: 4rem;
+    @include mobile {
+      .bt-base {
+        width: 100%;
+      }
+    }
+  }
+}
+.inquiry{
+  .wpcf7-checkbox{
+    display: flex;
+    flex-wrap: wrap;
+    @include desktop{
+      gap: .8rem 4.9rem;
+    }
+    @include mobile{
+      gap: .8rem;
+    }
+    .wpcf7-list-item-label{
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      line-height: 170%;
+      white-space: nowrap;
+      @include desktop{
+        font-size: 2rem;
+      }
+      @include mobile{
+        font-size: 1.6rem;
+      }
+      &::before{
+        border: 1px solid #141414;
+        display: inline-flex;
+        @include desktop{
+          width: 2.4rem;
+          height: 2.4rem;
+        }
+        @include mobile{
+          width: 2.2rem;
+          height: 2.2rem;
+        }
+      }
+    }
+  }
+  .wpcf7-checkbox{
+    .wpcf7-list-item input[type=checkbox]{
+      display: none;
+      &:checked{
+        &+.wpcf7-list-item-label{
+          &::before{
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26' fill='none'%3E%3Crect x='0.5' y='0.5' width='25' height='25' fill='%23141414'/%3E%3Crect x='0.5' y='0.5' width='25' height='25' stroke='%23141414'/%3E%3Cpath d='M7 12L11.8065 18L19.5 8' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+            background-size: 2.4rem 2.4rem;
+            background-position: center;
+            @include desktop{
+              width: 2.4rem;
+              height: 2.4rem;
+            }
+            @include mobile{
+              width: 2.2rem;
+              height: 2.2rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  &._black{
+    background: $c_text;
+    .inquiry-inner{
+      color: #fff;
+      @include desktop{
+        gap: 10rem 8rem;
+        margin: 0 auto;
+      }
+      .common-text{
+        color: $c_primary;
+      }
+      .bt-base{
+        &.active{
+          background: $c_primary;
+          color: $c_text;
+        }
+      }
+    }
+    .lead_agree_form{
+      .check_round{
+        input{
+          &:checked{
+            &+span{
+              &::before{
+                display: block;
+                width: 2.6rem;
+                height: 2.6rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='28' viewBox='0 0 29 28' fill='none'%3E%3Crect x='1.5' y='1' width='26' height='26' rx='13' fill='white'/%3E%3Crect x='1.5' y='1' width='26' height='26' rx='13' stroke='white' stroke-width='2'/%3E%3Cpath d='M8.5 13L13.3065 19L21 9' stroke='%23141414' stroke-width='2'/%3E%3C/svg%3E");
+              }
+            }
+          }
+        }
+      }
+    }
+    .contact_agree {
+      .wpcf7-list-item{
+        &>label{
+          .wpcf7-list-item-label{
+            &::before{
+              background-color: #434343;
+            }
+            &:after{
+              display: none;
+            }
+          }
+          input{
+            &:checked{
+              &+.wpcf7-list-item-label{
+                &:before{
+                  background-color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .contact_marketing{
+      input{
+        &:checked{
+          &+span{
+            &::before{
+              background-color: #fff;
+            }
+          }
+        }
+        &+span{
+          &::before{
+            background-color: #434343;
+          }
+        }
+      }
+    }
+    .lead_agree_form{
+      .check_round{
+        label{
+          &>span{
+            color: $c_primary;
+            &::before{
+              background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='29' height='28' viewBox='0 0 29 28' fill='none'%3E%3Cg opacity='0.2'%3E%3Crect x='1.5' y='1' width='26' height='26' rx='13' stroke='white' stroke-width='2'/%3E%3Cpath d='M8.5 13L13.3065 19L21 9' stroke='white' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+            }
+          }
+        }
+      }
+    }
+  }
+  .common-leadform{
+    display: none;
+    max-width: 108.7rem;
+    width: 100%;
+    &.active{
+      display: flex;
+    }
+  }
+  .step2{
+    .inquiry-inner{
+      .common-text{
+        @include desktop{
+          font-size: 1.8rem;
+        }
+        @include mobile{
+          font-size: 1.6rem;
+          font-weight: 400;
+          line-height: 140%;
+        }
+      }
+    }
+  }
+  .inquiry-inner{
+    flex-wrap: wrap; 
+    display: flex;
+    max-width: 108.7rem;
+    @include desktop{
+      gap: 6rem;
+      margin-left: 0;
+    }
+    @include mobile{
+      gap: 4.8rem;
+      padding-top: 4rem;
+    }
+    .contact_box{
+      margin-top: 0;
+      @include desktop{
+        gap: 2.4rem;
+      }
+    }
+    .common-title{
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 140%;
+      letter-spacing: -1px;
+      @include desktop{
+        font-size: 3.6rem;
+        font-weight: 700;
+        min-width: 28.7rem;
+      }
+      @include mobile{
+        font-size: 2.6rem;
+        font-weight: 700;
+      }
+    }
+    .common-text{
+      margin-top: 2rem;
+      color: $c_text;
+      line-height: 140%;
+      @include desktop{
+        font-size: 2.4rem;
+        line-height: 140%;
+        font-weight: 400;
+      }
+      @include mobile{
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 140%;
+        margin-top: 1.4rem;
+      }
+    }
+    .inquiry-talk{
+      display: flex;
+      width: 100%;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      position: relative;
+      @include mobile{
+        flex-direction: column;
+        gap: 1rem;
+        width: fit-content;
+      }
+      p{
+        @include desktop{
+          font-size: 1.6rem;
+          line-height: 170%;
+        }
+      }
+      li{
+        color: #393939;
+        line-height: 150%;
+        position: relative;
+        @include desktop{
+          background: #f4f4f4;
+          border-radius: 1.6rem;
+          box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+        &:nth-child(3){
+          position: relative;
+          z-index: 1;
+        }
+        @include desktop{
+          width: 26rem;
+          font-size: 1.6rem;
+          margin-left: -2.5rem;
+          padding: 1.2rem 1.2rem;
+          text-align: center;
+          &:nth-child(1){
+            margin-top: 1.2rem;
+            margin-left: 0;
+          }
+          &:nth-child(2){
+            margin-top: 4.2rem;
+          }
+          &:nth-child(4){
+            margin-top: 3rem;
+          }
+        }
+        &::after{
+          content: '';
+          display: block;
+          position: absolute;
+          @include desktop{
+            width: 2rem;
+            height: 1.2rem;
+            background: url($images+'/inquiry/pc/img_talk.png') center center no-repeat;
+            background-size: 100% auto;
+            left: calc(50% - 1rem);
+            top: -1.2rem;
+          }
+        }
+        @include mobile{
+          font-size: 1.4rem;
+          background: $c_gray_4;
+          border-radius: 1.2rem;
+          padding: 1.2rem 1.6rem;
+          margin-left: 1.4rem;
+          box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);          
+          &:nth-child(2n-1){
+            margin-left: 4.9rem;
+            &::after{
+              width: 1.4rem;
+              height: 1.9rem;
+              background: url($images+'/inquiry/mo/img_talk.png') center center no-repeat;
+              background-size: 1.4rem 1.9rem;
+              right: -1.3rem;
+              top: 1.2rem;
+            }
+          }
+          &:nth-child(2n){
+            padding-left: 1.4rem;
+            &::after{
+              width: 1.4rem;
+              height: 1.9rem;
+              transform: scaleX(-1);
+              background: url($images+'/inquiry/mo/img_talk.png') center center no-repeat;
+              background-size: 1.4rem 1.9rem;
+              left: -1.3rem;
+              top: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+    .bt-base{
+      color: $c_primary;
+      background: #5B5B5B;
+      width: 100%;
+      border: none;
+      @include desktop{
+        margin-top: 4rem;
+        &:not(.active){
+          cursor: default;
+          pointer-events: none;
+        }
+        &:hover{
+          background: #5B5B5B;
+          color: $c_primary;
+        }
+      }
+      @include mobile{
+        margin-top: 2.4rem;
+      }
+      &.active{
+        background: $c_text;
+        color: $c_primary;
+      }
+      &::after{
+        display: none;
+      }
+    }
+  }
+  .common-form{
+    width: 100%;
+    .form-box{
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    @include desktop{
+      max-width: 60rem;
+    }
+    textarea{
+      border-radius: 12px;
+      border: 2px solid rgba(20, 20, 20, 0.20);
+      background: $c_primary;
+      width: 100%;
+      max-height: 17.8rem;
+      overflow: auto;
+      line-height: 170%;
+      &:placeholder{
+        color: rgba(23,23,23,0.5);
+      }
+      @include desktop{
+        font-size: 1.8rem;
+        padding: 1.6rem 2.4rem;
+      }
+      @include mobile{
+        font-size: 1.6rem;
+        padding: 1.6rem;
+      }
+    }
+    .large_area{
+      width: 100%;
+    }
+    .inquiryStep{
+      display: none;
+    }
+    .form_tit{
+      margin-bottom: 2.4rem;
+      @include desktop{
+        font-size: 2.4rem;
+        line-height: 140%;
+        font-weight: 700;
+      }
+      @include mobile{
+        font-size: 1.8rem;
+        line-height: 140%;
+        font-weight: 700;
+      }
+    }
+    .contact_item{
+      padding: 0;
+      border: none;
+      &>p{
+        flex-wrap: wrap;
+      }
+    }
+    .ff_valid_box{
+      position: static;
+      @include desktop{
+        margin-top: 0.8rem;
+      }
+      @include mobile{
+        margin-top: 0.4rem;
+      }
+    }
+  }
+  .contact_item{
+    .wpcf7-form-control-wrap{
+      width: 100%;
+      input[type=text], 
+      input[type=number], 
+      input[type=tel], 
+      input[type=email] {
+        border: 2px solid rgba(20, 20, 20, 0.20);
+        border-radius: 1.2rem;
+        margin: 0;
+        @include desktop{
+          font-size: 1.8rem;
+          padding: .8rem 2.4rem;
+          height: 4.8rem;
+        }
+        @include mobile{
+          font-size: 1.6rem;
+          padding: .6rem 1.6rem;
+          height: 4.3rem;
+        }
+        &::placeholder{
+          color: #141414;
+          @include desktop{
+            font-size: 1.8rem;
+          }
+          @include mobile{
+            font-size: 1.6rem;
+          }
+        }
+        &.ff_not_valid{ 
+          border-color: #ff4949;
+        }
+      }
+      textarea{
+        &.ff_not_valid{
+          border-color: #ff4949;
+        }
+      }
+    }
+    .label_title{
+      width: 100%;
+      small{
+        margin-left: 0.8rem;
+        @include desktop{
+          font-size: 1.4rem;
+        }
+        @include mobile{
+          font-size: 1.3rem;
+        }
+      }
+    }
+    &.contact_check{
+      .label_title{
+        @include mobile{
+          font-size: 1.8rem;
+        }
+        &+.wpcf7-form-control-wrap{
+          display: block;
+          @include desktop{
+            margin-top: 1.1rem;
+          }
+          @include mobile{
+            margin-top: 1.6rem;
+          }
+        }
+      }
+    }
+  }
+  .btn-group{
+    &.contact_submit{
+      p{
+        width: 100%;
+      }
+    }
+  }
+  .side-lead-contents{
+    .contact_item{
+      label{
+        padding: 0;
+        gap: 1.2rem;
+        flex-direction: row;
+        align-items: center;
+      }
+      .wpcf7-form-control-wrap{
+        flex-direction: column;
+        input[type=checkbox]{
+          width: 2.6rem;
+        }
+        .wpcf7-list-item{
+          margin-left: 0;
+          @include desktop{
+            min-width: 19.8rem;
+          }
+          @include mobile{
+            min-width: 15.2rem;
+            width: calc(50% - 3.7rem);
+          }
+        }
+      } 
+    }
+    .contact_box{
+      @include mobile{
+        gap: 2.4rem;
+      }
+    }
+    .contact_agree{
+      margin: 1.8rem 0 0;
+      &+.has_error{
+         margin-top: 0.4rem;
+      }
+    }
+  } 
+}
+@media (max-width: 1540px) and (min-width: 961px) {
+  .inquiry{
+    .inquiry-inner{
+      .inquiry-talk{
+        li{
+          width: 50%;
+          &:nth-child(3){
+            margin-left: 0;
+            margin-top: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

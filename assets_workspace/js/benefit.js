@@ -1,0 +1,9 @@
+$(".sub_title a").on('click',function(){
+  if($(this).closest('.text_box').hasClass('active')){
+    $('.text_box').removeClass('active');
+    $(this).closest('.text_box').removeClass('active');
+  }else{
+    $('.text_box').removeClass('active');
+    $(this).closest('.text_box').addClass('active');
+  }
+});

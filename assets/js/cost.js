@@ -1,0 +1,1 @@
+import{initCommonSwiper}from"./common_swiper.js";initCommonSwiper();

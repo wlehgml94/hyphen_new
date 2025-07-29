@@ -1,0 +1,288 @@
+.lazyload,
+.lazyloading {
+  opacity: 0;
+  font-size: 0;
+  filter: blur(5px);
+}
+.lazyloaded {
+  opacity: 1;
+  filter: blur(0);
+  transition: 0.3s ease filter;
+}
+
+$customer_list_w: 22.8%;
+$customer_list_gap: 2.4rem;
+$customer_list_pd: 1.6rem;
+
+.customer_list {
+  display: none;
+  &._active {
+    display: flex;
+    flex-wrap: wrap;
+    --row-gap: 2.4rem;
+    gap: 8rem var(--row-gap);
+    @include mobile {
+      gap: 4rem;
+      &:not(._view_1) {
+        padding: 2rem;
+      }
+    }
+  }
+  .customer_header {
+    display: none;
+    width: 100%;
+    padding: $customer_list_pd 0;
+    border-bottom: 1px solid $c_text;
+    ul {
+      display: flex;
+      gap: 2.4rem;
+      li {
+        padding: 0 $customer_list_gap;
+        width: $customer_list_w;
+        @include text(2.4rem, 400, 140%);
+        &:first-child {
+          flex: 1;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .customer_box {
+    width: calc((100% / 4) - 1.8rem);
+    @include mobile {
+      width: 100% !important;
+    }
+    .thumbs {
+      position: relative;
+      width: 100%;
+      padding-top: 64.918%;
+      background-color: #f4f4f4;
+      overflow: hidden;
+      @include hoverStyle('::after', false) {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba($color: #000000, $alpha: 0.5);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 45 45' fill='none'%3E%3Cpath d='M2.5 43L42.5 3' stroke='white' stroke-width='5'/%3E%3Cpath d='M7.87891 3H42.498V37.6194' stroke='white' stroke-width='5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: 2rem auto;
+        background-position: center;
+      }
+      img {
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    dl {
+      margin-top: 1.6rem;
+      align-items: center;
+      dt {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        @include mobile {
+          margin-bottom: 0.4rem;
+        }
+        span {
+          @include text(2.4rem, 700, 140%, -1px);
+          @include mobile {
+            font-size: 1.8rem;
+          }
+        }
+        .icon_new {
+          height: 1.9rem;
+          padding: 0 0.6rem;
+          @include text(1rem, 700, 1.9rem);
+          @include textColor(#fff);
+          word-break: keep-all;
+          background-color: $c_text;
+        }
+      }
+      dd {
+        @include text(1.8rem, 400, 170%);
+        @include textColor(null, 0.4);
+        @include mobile {
+          @include text(1.6rem);
+        }
+      }
+    }
+  }
+  &[data-name='공간'] {
+    dl {
+      display: none;
+    }
+  }
+  &._view_1 {
+    flex-direction: column;
+    gap: 0;
+    .customer_header {
+      display: block;
+      @include mobile {
+        display: none;
+      }
+    }
+    .customer_box {
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+      @include hoverStyle() {
+        background: $c_text;
+        color: $c_primary;
+        border-color: $c_text;
+        dd {
+          opacity: 1;
+        }
+      }
+      .thumbs {
+        display: none;
+      }
+      dl {
+        display: flex;
+        gap: $customer_list_gap;
+        margin-top: 0;
+        padding: $customer_list_pd 0;
+        min-height: 6.6rem;
+        dt {
+          padding: 0 $customer_list_gap;
+          flex: 1;
+          span {
+            @include mobile {
+              font-size: 2.4rem;
+            }
+          }
+        }
+        dd {
+          padding: 0 $customer_list_gap;
+          width: $customer_list_w;
+          @include mobile {
+            font-size: 1.8rem;
+            opacity: 1;
+          }
+        }
+        @include mobile {
+          flex-direction: column;
+          gap: 0;
+          dt,
+          dd {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  &._view_2 {
+    .customer_box {
+      width: calc((100% / 2) - var(--row-gap) / 2);
+      dl {
+        margin-top: 2.4rem;
+        span {
+          font-size: 3rem;
+          @include mobile {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+  &._view_4 {
+    .customer_box {
+      width: calc((100% / 4) - 1.8rem);
+    }
+  }
+}
+.project_wrapper {
+  padding: 14.8rem 6rem 18.8rem;
+  flex: 1;
+  width: 100%;
+  @include mobile {
+    padding: 0 0 13rem;
+  }
+  .project_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4.8rem;
+    background: $c_primary;
+    @include mobile {
+      position: sticky;
+      top: 6.8rem;
+      z-index: 1;
+      flex-direction: column;
+      margin-bottom: 0;
+      .project_tabs,
+      .select_view {
+        width: 100%;
+      }
+      .project_tabs {
+        border-bottom: 1px solid $c_text;
+        li {
+          flex: 1;
+          a {
+            padding: 2rem 0;
+            width: 100%;
+            height: 6rem;
+          }
+        }
+      }
+      .select_view {
+        padding: 1.4rem 2rem;
+        border-bottom: 1px solid #ddd;
+        > ul {
+          justify-content: flex-end;
+          width: 100%;
+        }
+      }
+    }
+  }
+  & .project_tabs > ul {
+    display: flex;
+  }
+  & .select_view > ul {
+    display: flex;
+    gap: 1.6rem;
+    @include mobile {
+      ._view_4 {
+        display: none;
+      }
+    }
+  }
+  & .project_tabs a {
+    display: block;
+    padding: 0.6rem 0;
+    width: 10rem;
+    height: 4.6rem;
+    text-align: center;
+    @include text(2rem, 400);
+    &._active {
+      font-weight: 700;
+      border-bottom: 2px solid $c_text;
+    }
+  }
+  & .select_view a {
+    display: block;
+    width: 3.2rem;
+    height: 3.2rem;
+    background: #c5c5c5;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    @at-root ._view_1 {
+      &._hidden {
+        display: none;
+      }
+      > a {
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cmask id='path-1-inside-1_3565_17873' fill='white'%3E%3Cpath d='M0 0H32V32H0V0Z'/%3E%3C/mask%3E%3Cpath d='M0 1H32V-1H0V1Z' fill='%23141414' mask='url(%23path-1-inside-1_3565_17873)'/%3E%3Cline x1='32' y1='10.5' x2='-3.97376e-08' y2='10.5' stroke='%23141414'/%3E%3Cpath d='M32 20.5L-1.07978e-07 20.5' stroke='%23141414'/%3E%3Cpath d='M32 31L-1.07978e-07 31' stroke='%23141414'/%3E%3C/svg%3E");
+      }
+    }
+    @at-root ._view_2 > a {
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Crect x='0.5' y='0.5' width='31' height='31' stroke='%23C5C5C5'/%3E%3Cline x1='16.5508' y1='-2.18557e-08' x2='16.5508' y2='31.3057' stroke='%23C5C5C5'/%3E%3Cline x1='31.4766' y1='16.5527' x2='0.627159' y2='16.5527' stroke='%23C5C5C5'/%3E%3C/svg%3E");
+    }
+    @at-root ._view_4 > a {
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Crect x='0.5' y='0.5' width='31' height='31' stroke='%23C5C5C5'/%3E%3Cline x1='32' y1='8.5' x2='-3.96071e-08' y2='8.5' stroke='%23C5C5C5'/%3E%3Cline x1='32' y1='16.5' x2='-3.96071e-08' y2='16.5' stroke='%23C5C5C5'/%3E%3Cline x1='32' y1='24.5' x2='-3.96071e-08' y2='24.5' stroke='%23C5C5C5'/%3E%3Cline x1='24.1758' y1='32' x2='24.1758' y2='-6.1391e-08' stroke='%23C5C5C5'/%3E%3Cline x1='16.1758' y1='32' x2='16.1758' y2='-6.1391e-08' stroke='%23C5C5C5'/%3E%3Cline x1='8.17578' y1='32' x2='8.17579' y2='-6.1391e-08' stroke='%23C5C5C5'/%3E%3C/svg%3E");
+    }
+    &._active {
+      background: $c_text;
+    }
+  }
+}

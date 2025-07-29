@@ -1,0 +1,119 @@
+@charset 'utf-8';
+
+//setColor
+$c_primary: #fff;
+$c_text: #141414;
+$c_sub_text: #808080;
+$c_err: #ff4949;
+$c_gray_1: #393939;
+$c_gray_2: #c5c5c5;
+$c_gray_3: #dddddd;
+$c_gray_4: #f4f4f4;
+
+//imageUrl
+$images: '../images';
+$fonts: '../fonts';
+
+//size
+$moSize: 960px;
+@mixin desktop {
+  @media (min-width: 961px) {
+    @content;
+  }
+}
+@mixin desktop_small {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: $moSize) {
+    @content;
+  }
+}
+
+@mixin blind {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+@mixin designScroll($gap: 2rem) {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 30%;
+    background-color: rgba(109, 117, 124, 0.5);
+    border: 1px solid $c_primary;
+  }
+  &::-webkit-scrollbar-button:vertical:start:decrement,
+  &::-webkit-scrollbar-button:vertical:end:decrement {
+    height: $gap;
+  }
+}
+
+@mixin hiddenScroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+//text guide
+@mixin text2($size, $bold: 400, $line: null) {
+  @if ($size == '60') {
+    font-size: 6rem;
+  } @else if ($size == '50') {
+    font-size: 5rem;
+  } @else if ($size == '36') {
+    font-size: 3.6rem;
+  } @else if ($size == '32') {
+    font-size: 3.2rem;
+  } @else if ($size == '24') {
+    font-size: 2.4rem;
+  } @else if ($size == '20') {
+    font-size: 2rem;
+  } @else {
+    font-size: $size;
+  }
+  font-weight: $bold;
+  line-height: $line;
+}
+/* text style */
+@mixin text($size, $bold: 400, $line: null, $spacing: null) {
+  font-size: $size;
+  font-weight: $bold;
+  line-height: $line;
+  letter-spacing: $spacing;
+}
+
+/* color , opacity */
+@mixin textColor($color, $opacity: null) {
+  color: $color;
+  opacity: $opacity;
+}
+
+/* hover */
+@mixin hoverStyle($selector: null, $space: true) {
+  @media (min-width: 961px) and (hover: hover) {
+    @if $selector {
+      @if $space {
+        &:hover #{$selector} {
+          @content;
+        }
+      } @else {
+        &:hover#{$selector} {
+          @content;
+        }
+      }
+    } @else {
+      &:hover {
+        @content;
+      }
+    }
+  }
+}
